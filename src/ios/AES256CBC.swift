@@ -318,6 +318,9 @@ final public class AES256CBC {
     fileprivate class func aesDecrypt(_ str: String, key: String, iv: String) throws -> String {
         let keyData = key.data(using: String.Encoding.utf8)!
         let ivData = iv.data(using: String.Encoding.utf8)!
+        if (!(Data(base64Encoded: str) != nil)) {
+            return nil
+        }
         let data = Data(base64Encoded: str)!
         let dec = try Data(bytes: AESCipher(key: keyData.bytes,
                                             iv: ivData.bytes).decrypt(bytes: data.bytes))
