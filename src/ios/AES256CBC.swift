@@ -315,7 +315,7 @@ final public class AES256CBC {
     }
 
     /// returns decrypted string, IV must be 16 chars long
-    fileprivate class func aesDecrypt(_ str: String, key: String, iv: String) throws -> String {
+    fileprivate class func aesDecrypt(_ str: String, key: String, iv: String) throws -> String? {
         let keyData = key.data(using: String.Encoding.utf8)!
         let ivData = iv.data(using: String.Encoding.utf8)!
         if (!(Data(base64Encoded: str) != nil)) {
